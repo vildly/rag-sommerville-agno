@@ -23,14 +23,16 @@ DB_URL = os.getenv(
     "postgresql+psycopg://ai:ai@localhost:5532/ai",
 )
 
-# Путь к PDF учебника. По умолчанию: учебник Sommerville в папке курса
-# (на уровень выше этого примера).
+# Путь к PDF учебника.
+# По умолчанию ищем файл в самой папке проекта; если там нет — на уровень выше
+# (для случая, когда репозиторий лежит внутри папки курса).
+_here = os.path.dirname(os.path.abspath(__file__))
+_pdf_name = "Software Engineering - Ian Sommerville.pdf"
+_pdf_local = os.path.join(_here, _pdf_name)
+_pdf_parent = os.path.join(os.path.dirname(_here), _pdf_name)
 PDF_PATH = os.getenv(
     "PDF_PATH",
-    os.path.join(
-        os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-        "Software Engineering - Ian Sommerville.pdf",
-    ),
+    _pdf_local if os.path.exists(_pdf_local) else _pdf_parent,
 )
 
 # Размер чанка и перекрытие (в символах, не токенах).

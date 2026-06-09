@@ -31,9 +31,14 @@ pip install -r requirements.txt
 cp .env.example .env
 ```
 
-PDF учебника по умолчанию берётся из папки курса (на уровень выше):
-`Software Engineering - Ian Sommerville.pdf`. Свой PDF можно указать через
-`PDF_PATH` в `.env`.
+Положите PDF учебника в корень этой папки под именем:
+
+```
+Software Engineering - Ian Sommerville.pdf
+```
+
+Скрипт найдёт его автоматически. Если имя другое или файл лежит в другом месте,
+задайте путь через `PDF_PATH` в `.env`.
 
 ## Шаг 1: поднять pgvector
 
