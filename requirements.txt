@@ -1,0 +1,16 @@
+# Ядро
+agno
+
+# Чтение PDF
+pypdf
+
+# pgvector + Postgres
+sqlalchemy
+psycopg[binary]
+pgvector
+
+# Нужно только при EMBEDDER=openai (эмбеддинги и/или чат-модель OpenAI)
+openai
+
+# Нужно только при EMBEDDER=ollama (клиент к локальному Ollama)
+ollama

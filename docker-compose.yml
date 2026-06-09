@@ -1,0 +1,24 @@
+# Локальный Postgres с расширением pgvector.
+# Запуск: docker compose up -d
+# Остановка: docker compose down  (данные остаются в volume pgdata)
+#
+# Образ agno/pgvector:16 уже содержит установленное расширение pgvector,
+# таблицы agno создаёт сам при индексации.
+
+services:
+  pgvector:
+    image: pgvector/pgvector:pg16
+    container_name: sommerville-pgvector
+    environment:
+      POSTGRES_DB: ai
+      POSTGRES_USER: ai
+      POSTGRES_PASSWORD: ai
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      # Хост:Контейнер. На хосте порт 5532, чтобы не конфликтовать с локальным Postgres на 5432.
+      - "5532:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
